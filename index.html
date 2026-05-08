@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Divya Marketing</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+overflow-x:hidden;
+position:relative;
+transition:0.5s;
+}
+
+/* SCROLL BAR */
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-track{
+background:#0f172a;
+}
+
+::-webkit-scrollbar-thumb{
+background:#00c6ff;
+border-radius:20px;
+}
+
+/* SCROLL PROGRESS */
+
+#progressBar{
+position:fixed;
+top:0;
+left:0;
+width:0%;
+height:5px;
+background:linear-gradient(90deg,#00c6ff,#ff00cc);
+z-index:99999;
+}
+
+/* PARTICLES */
+
+.particles{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background-image:
+radial-gradient(circle,#ffffff22 1px,transparent 1px);
+background-size:40px 40px;
+animation:moveParticles 20s linear infinite;
+z-index:-3;
+}
+
+@keyframes moveParticles{
+0%{
+transform:translateY(0);
+}
+100%{
+transform:translateY(-100px);
+}
+}
+
+/* CURSOR GLOW */
+
+.cursor-glow{
+position:fixed;
+width:300px;
+height:300px;
+background:radial-gradient(circle,
+rgba(0,198,255,0.25),
+transparent 70%);
+border-radius:50%;
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:-1;
+}
+
+/* TRAIL */
+
+.trail{
+position:fixed;
+width:12px;
+height:12px;
+background:#00c6ff;
+border-radius:50%;
+pointer-events:none;
+z-index:9999;
+animation:trailAnim 0.7s linear forwards;
+}
+
+@keyframes trailAnim{
+0%{
+opacity:1;
+transform:scale(1);
+}
+100%{
+opacity:0;
+transform:scale(0);
+}
+}
+
+/* CLICK BURST */
+
+.burst{
+position:fixed;
+width:20px;
+height:20px;
+border:2px solid #00c6ff;
+border-radius:50%;
+pointer-events:none;
+z-index:99999;
+animation:burstAnim 0.6s linear forwards;
+}
+
+@keyframes burstAnim{
+0%{
+opacity:1;
+transform:scale(1);
+}
+100%{
+opacity:0;
+transform:scale(5);
+}
+}
+
+/* LOADER */
+
+.loader{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+background:#020617;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+transition:1s;
+}
+
+.loading-circle{
+width:120px;
+height:120px;
+border:8px solid rgba(255,255,255,0.1);
+border-top:8px solid #00c6ff;
+border-right:8px solid #ff00cc;
+border-radius:50%;
+animation:spin 1.2s linear infinite;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+.loader p{
+margin-top:30px;
+font-size:22px;
+font-weight:600;
+letter-spacing:2px;
+}
+
+/* NAVBAR */
+
+.nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(255,255,255,0.1);
+z-index:1000;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+align-items:center;
+}
+
+.nav a{
+color:white;
+text-decoration:none;
+font-weight:600;
+font-size:18px;
+position:relative;
+}
+
+.nav a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-5px;
+width:0%;
+height:2px;
+background:#00c6ff;
+transition:0.4s;
+}
+
+.nav a:hover::after{
+width:100%;
+}
+
+.menu-toggle{
+display:none;
+font-size:32px;
+cursor:pointer;
+}
+
+/* THEME TOGGLE */
+
+.theme-toggle input{
+display:none;
+}
+
+.theme-toggle label{
+width:60px;
+height:30px;
+background:white;
+display:block;
+border-radius:50px;
+position:relative;
+cursor:pointer;
+}
+
+.theme-toggle label::after{
+content:'';
+width:24px;
+height:24px;
+background:#0f172a;
+position:absolute;
+top:3px;
+left:3px;
+border-radius:50%;
+transition:0.4s;
+}
+
+.theme-toggle input:checked + label::after{
+left:33px;
+}
+
+/* HERO */
+
+header{
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+background:
+linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)),
+linear-gradient(-45deg,#ff0080,#7928ca,#00c6ff,#0072ff);
+background-size:400% 400%;
+animation:bgMove 10s infinite alternate;
+}
+
+@keyframes bgMove{
+100%{
+background-position:100% 50%;
+}
+}
+
+.animate{
+font-size:85px;
+font-weight:700;
+background:linear-gradient(90deg,#ffffff,#00c6ff,#ff00cc,#ffffff);
+background-size:300%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:glowText 5s linear infinite;
+}
+
+@keyframes glowText{
+100%{
+background-position:300%;
+}
+}
+
+#typing{
+margin-top:25px;
+font-size:24px;
+width:85%;
+max-width:800px;
+line-height:1.8;
+min-height:70px;
+}
+
+/* BUTTON */
+
+.btn{
+margin-top:30px;
+padding:15px 35px;
+background:white;
+color:black;
+border-radius:40px;
+text-decoration:none;
+font-weight:600;
+display:inline-block;
+border:none;
+cursor:pointer;
+transition:0.2s;
+}
+
+/* SECTION */
+
+section{
+padding:100px 8%;
+}
+
+h2{
+font-size:55px;
+text-align:center;
+margin-bottom:50px;
+}
+
+/* COUNTERS */
+
+.counter-box{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+}
+
+.counter-card{
+background:rgba(255,255,255,0.05);
+padding:40px;
+border-radius:25px;
+text-align:center;
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,0.1);
+transition:0.4s;
+}
+
+.counter{
+font-size:55px;
+color:#00c6ff;
+font-weight:700;
+}
+
+/* SERVICES */
+
+.page2{
+background:#111827;
+}
+
+.services-slider{
+display:flex;
+gap:40px;
+overflow-x:auto;
+padding:40px 10px;
+scrollbar-width:none;
+}
+
+.services-slider::-webkit-scrollbar{
+display:none;
+}
+
+.pc-card{
+min-width:430px;
+height:470px;
+background:rgba(17,24,39,0.9);
+border-radius:25px;
+padding:20px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+transition:0.4s;
+transform-style:preserve-3d;
+}
+
+.pc-top{
+height:40px;
+background:#1e293b;
+border-radius:15px 15px 0 0;
+display:flex;
+align-items:center;
+padding-left:15px;
+gap:10px;
+margin:-20px -20px 25px -20px;
+}
+
+.dot{
+width:12px;
+height:12px;
+border-radius:50%;
+}
+
+.red{background:#ff5f56;}
+.yellow{background:#ffbd2e;}
+.green{background:#27c93f;}
+
+.screen h3{
+font-size:35px;
+margin-bottom:20px;
+color:#00c6ff;
+}
+
+.screen p{
+font-size:18px;
+line-height:1.8;
+color:#d1d5db;
+}
+
+/* PROJECTS */
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.project-card{
+background:#1e293b;
+padding:20px;
+border-radius:25px;
+transition:0.5s;
+}
+
+.project-img{
+height:220px;
+border-radius:20px;
+background:linear-gradient(45deg,#00c6ff,#7928ca);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:28px;
+font-weight:700;
+}
+
+/* TESTIMONIALS */
+
+.testimonial-slider{
+overflow:hidden;
+width:100%;
+}
+
+.testimonial-track{
+display:flex;
+gap:30px;
+width:max-content;
+animation:scrollReviews 18s linear infinite;
+}
+
+@keyframes scrollReviews{
+100%{
+transform:translateX(-50%);
+}
+}
+
+.testimonial{
+min-width:350px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+padding:35px;
+border-radius:25px;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+/* CONTACT */
+
+.contact-box{
+background:#0f172a;
+padding:50px;
+border-radius:30px;
+text-align:center;
+}
+
+.contact-box p{
+margin:18px 0;
+font-size:22px;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:30px;
+background:black;
+}
+
+/* WHATSAPP */
+
+.whatsapp-float{
+position:fixed;
+bottom:25px;
+right:25px;
+width:70px;
+height:70px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:35px;
+text-decoration:none;
+color:white;
+z-index:9999;
+box-shadow:0 0 25px rgba(37,211,102,0.6);
+animation:floatWhatsapp 2s infinite;
+}
+
+@keyframes floatWhatsapp{
+50%{
+transform:translateY(-10px);
+}
+}
+
+/* SCROLL ANIMATION */
+
+.hidden{
+opacity:0;
+transform:translateY(80px);
+transition:1s;
+}
+
+.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* LIGHT MODE */
+
+.light-mode{
+background:white;
+color:#0f172a;
+}
+
+.light-mode .pc-card,
+.light-mode .project-card,
+.light-mode .testimonial,
+.light-mode .counter-card,
+.light-mode .contact-box{
+background:white;
+color:#0f172a;
+}
+
+.light-mode .nav{
+background:rgba(255,255,255,0.9);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.animate{
+font-size:48px;
+}
+
+#typing{
+font-size:18px;
+}
+
+.menu-toggle{
+display:block;
+}
+
+.nav-links{
+position:absolute;
+top:80px;
+left:0;
+width:100%;
+background:#0f172a;
+flex-direction:column;
+padding:30px 0;
+gap:25px;
+transform:translateY(-150%);
+transition:0.5s;
+}
+
+.nav-links.active{
+transform:translateY(0);
+}
+
+.pc-card{
+min-width:90%;
+height:auto;
+}
+
+h2{
+font-size:38px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="progressBar"></div>
+
+<!-- LOADER -->
+
+<div class="loader" id="loader">
+<div class="loading-circle"></div>
+<p>Loading Experience...</p>
+</div>
+
+<!-- PARTICLES -->
+
+<div class="particles"></div>
+
+<!-- CURSOR -->
+
+<div class="cursor-glow"></div>
+
+<!-- NAVBAR -->
+
+<div class="nav">
+
+<div class="logo">Divya Marketing</div>
+
+<div class="menu-toggle" id="menuToggle">
+☰
+</div>
+
+<div class="nav-links" id="navLinks">
+
+<a href="#home">Home</a>
+<a href="#services">Services</a>
+<a href="#projects">Projects</a>
+<a href="#testimonials">Reviews</a>
+<a href="#contact">Contact</a>
+
+<div class="theme-toggle">
+<input type="checkbox" id="themeSwitch">
+<label for="themeSwitch"></label>
+</div>
+
+</div>
+
+</div>
+
+<!-- HERO -->
+
+<header id="home">
+
+<h1 class="animate">Divya Marketing</h1>
+
+<p id="typing"></p>
+
+<a href="#services" class="btn">
+Explore Services
+</a>
+
+</header>
+
+<!-- COUNTERS -->
+
+<section class="hidden">
+
+<h2>Why Choose Us</h2>
+
+<div class="counter-box">
+
+<div class="counter-card">
+<h1 class="counter" data-target="25">0</h1>
+<p>Projects Completed</p>
+</div>
+
+<div class="counter-card">
+<h1 class="counter" data-target="100">0</h1>
+<p>Responsive Design</p>
+</div>
+
+<div class="counter-card">
+<h1 class="counter" data-target="24">0</h1>
+<p>Support Available</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section class="page2 hidden" id="services">
+
+<h2>Our Services</h2>
+
+<div class="services-slider">
+
+<div class="pc-card">
+
+<div class="pc-top">
+<div class="dot red"></div>
+<div class="dot yellow"></div>
+<div class="dot green"></div>
+</div>
+
+<div class="screen">
+
+<h3>Website Development</h3>
+
+<p>
+Custom responsive websites with premium animations,
+modern UI and high speed performance.
+</p>
+
+<a class="btn"
+href="https://shaanmallanand.co.in/"
+target="_blank">
+
+View Project
+
+</a>
+
+</div>
+
+</div>
+
+<div class="pc-card">
+
+<div class="pc-top">
+<div class="dot red"></div>
+<div class="dot yellow"></div>
+<div class="dot green"></div>
+</div>
+
+<div class="screen">
+
+<h3>Web Designing</h3>
+
+<p>
+Creative UI/UX interfaces with futuristic
+layouts and smooth animations.
+</p>
+
+</div>
+
+</div>
+
+<div class="pc-card">
+
+<div class="pc-top">
+<div class="dot red"></div>
+<div class="dot yellow"></div>
+<div class="dot green"></div>
+</div>
+
+<div class="screen">
+
+<h3>Business Websites</h3>
+
+<p>
+Professional websites for brands,
+businesses and startups.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects" class="hidden">
+
+<h2>Featured Projects</h2>
+
+<div class="projects">
+
+<div class="project-card">
+
+<div class="project-img">
+WEBSITE PREVIEW
+</div>
+
+<h3>Business Website</h3>
+
+<p>
+Modern responsive business website with premium UI.
+</p>
+
+</div>
+
+<div class="project-card">
+
+<div class="project-img">
+PORTFOLIO DESIGN
+</div>
+
+<h3>Portfolio Website</h3>
+
+<p>
+Creative portfolio website with smooth interactions.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section id="testimonials" class="hidden">
+
+<h2>Client Reviews</h2>
+
+<div class="testimonial-slider">
+
+<div class="testimonial-track">
+
+<div class="testimonial">
+<p>⭐⭐⭐⭐⭐ <br><br>
+Amazing website quality with premium animations.
+</p>
+<h3>- Happy Client</h3>
+</div>
+
+<div class="testimonial">
+<p>⭐⭐⭐⭐⭐ <br><br>
+Very professional and smooth experience.
+</p>
+<h3>- Business Owner</h3>
+</div>
+
+<div class="testimonial">
+<p>⭐⭐⭐⭐⭐ <br><br>
+Modern futuristic UI and responsive design.
+</p>
+<h3>- Startup Brand</h3>
+</div>
+
+<div class="testimonial">
+<p>⭐⭐⭐⭐⭐ <br><br>
+Best premium website experience.
+</p>
+<h3>- Ecommerce Client</h3>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="hidden">
+
+<div class="contact-box" id="contact">
+
+<h2>Contact Details</h2>
+
+<p>📞 Contact Number: 8469605447</p>
+
+<p>📧 Email: dpandya2007@gmail.com</p>
+
+<p>📷 Instagram: @d_pandya04</p>
+
+<a class="btn"
+href="https://www.instagram.com/d_pandya04?igsh=Z2VnMGgwangxeDc1"
+target="_blank">
+
+Contact on Instagram
+
+</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+© 2026 Divya Marketing | All Rights Reserved
+</footer>
+
+<!-- WHATSAPP -->
+
+<a href="https://wa.me/918469605447"
+class="whatsapp-float"
+target="_blank">
+
+💬
+
+</a>
+
+<script>
+
+/* LOADER */
+
+window.addEventListener("load",()=>{
+
+setTimeout(()=>{
+
+document.getElementById("loader").style.opacity="0";
+
+setTimeout(()=>{
+document.getElementById("loader").style.display="none";
+},1000);
+
+},2000);
+
+});
+
+/* TYPING */
+
+const text="Professional Web Development & Web Designing Services For Businesses & Personal Brands.";
+
+let i=0;
+
+function typing(){
+
+if(i<text.length){
+
+document.getElementById("typing").innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(typing,50);
+
+}
+
+}
+
+typing();
+
+/* CURSOR */
+
+const glow=document.querySelector(".cursor-glow");
+
+document.addEventListener("mousemove",(e)=>{
+
+glow.style.left=e.pageX+"px";
+glow.style.top=e.pageY+"px";
+
+/* TRAIL */
+
+const trail=document.createElement("div");
+
+trail.className="trail";
+
+trail.style.left=e.pageX+"px";
+trail.style.top=e.pageY+"px";
+
+document.body.appendChild(trail);
+
+setTimeout(()=>{
+trail.remove();
+},700);
+
+});
+
+/* CLICK BURST */
+
+document.addEventListener("click",(e)=>{
+
+const burst=document.createElement("div");
+
+burst.className="burst";
+
+burst.style.left=e.pageX-10+"px";
+burst.style.top=e.pageY-10+"px";
+
+document.body.appendChild(burst);
+
+setTimeout(()=>{
+burst.remove();
+},600);
+
+});
+
+/* COUNTERS */
+
+const counters=document.querySelectorAll(".counter");
+
+counters.forEach(counter=>{
+
+const updateCounter=()=>{
+
+const target=+counter.getAttribute("data-target");
+
+const count=+counter.innerText;
+
+const speed=target/100;
+
+if(count<target){
+
+counter.innerText=Math.ceil(count+speed);
+
+setTimeout(updateCounter,30);
+
+}else{
+
+counter.innerText=target+"+";
+
+}
+
+};
+
+updateCounter();
+
+});
+
+/* SCROLL REVEAL */
+
+const observer=new IntersectionObserver((entries)=>{
+
+entries.forEach((entry)=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+});
+
+document.querySelectorAll(".hidden").forEach((el)=>observer.observe(el));
+
+/* 3D CARD EFFECT */
+
+document.querySelectorAll(".pc-card").forEach(card=>{
+
+card.addEventListener("mousemove",(e)=>{
+
+let x=e.offsetX;
+let y=e.offsetY;
+
+let rotateY=(x-200)/20;
+let rotateX=-(y-200)/20;
+
+card.style.transform=
+`rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.transform="rotateX(0) rotateY(0)";
+
+});
+
+});
+
+/* MAGNETIC BUTTON */
+
+document.querySelectorAll(".btn").forEach(btn=>{
+
+btn.addEventListener("mousemove",(e)=>{
+
+const rect=btn.getBoundingClientRect();
+
+const x=e.clientX-rect.left-rect.width/2;
+const y=e.clientY-rect.top-rect.height/2;
+
+btn.style.transform=
+`translate(${x*0.2}px,${y*0.2}px)`;
+
+});
+
+btn.addEventListener("mouseleave",()=>{
+
+btn.style.transform="translate(0,0)";
+
+});
+
+});
+
+/* THEME SWITCH */
+
+const switchBtn=document.getElementById("themeSwitch");
+
+switchBtn.addEventListener("change",()=>{
+
+document.body.classList.toggle("light-mode");
+
+});
+
+/* MOBILE NAV */
+
+const menuToggle=document.getElementById("menuToggle");
+
+const navLinks=document.getElementById("navLinks");
+
+menuToggle.addEventListener("click",()=>{
+
+navLinks.classList.toggle("active");
+
+});
+
+/* SCROLL PROGRESS */
+
+window.addEventListener("scroll",()=>{
+
+let scrollTop=document.documentElement.scrollTop;
+
+let scrollHeight=
+document.documentElement.scrollHeight-
+document.documentElement.clientHeight;
+
+let progress=(scrollTop/scrollHeight)*100;
+
+document.getElementById("progressBar").style.width=
+progress+"%";
+
+});
+
+</script>
+
+</body>
+</html>
